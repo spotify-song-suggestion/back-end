@@ -1,0 +1,37 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.2",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ian-Castillo/back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ian-Castillo/back-end/issues"
+  },
+  "homepage": "https://github.com/Ian-Castillo/back-end#readme"
+}
