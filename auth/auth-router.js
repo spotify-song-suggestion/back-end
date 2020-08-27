@@ -4,7 +4,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); 
 
 const secrets =  require ('../config/secrets.js');
+//CRUD
+//Update - Put
+//Delete - Delete
 
+// 
 router.get('/', (req, res) => {
     res.send('Hello from Express');
   });
@@ -58,5 +62,37 @@ router.post('/register', (req, res) => {
     };
     return jwt.sign (payload, secrets.jwtSecret, options)
   }
+
+
+
+router.put('/update',(req,res) => {
+  const changes = req.body
+
+  const hash = bcrypt.hashSync(changes.password, 10);
+  changes.password = hash;
+
+  Users.update(changes, changes.username)
+    .then(user => {
+      res.status(201).json({username: user.username, message:'password updated successfully'})
+    })
+    .catch(error => {
+      res.status(500).json({message:'failed to update password', error});
+      console.log(error);
+    })
+})
+
+router.delete('/delete', (req,res) => {
+  const {username} = req.body
+
+  Users.remove(username)
+  .then (user => {
+    res.status(201).json({message:`succesfully deleted user ${user.username}`})
+  })
+  .catch(error => {
+    res.status(500).json({message:'failed to delete user', error});
+  })
+
+})
+
   module.exports = router;
   
