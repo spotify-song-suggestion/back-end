@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Users = require('../users/users-model');
 const bcrypt = require('bcryptjs');
+const authenticate = require('./authenticate-middleware');
 const jwt = require('jsonwebtoken'); 
 
 const secrets =  require ('../config/secrets.js');
@@ -81,12 +82,12 @@ router.put('/update',(req,res) => {
     })
 })
 
-router.delete('/delete', (req,res) => {
+router.delete('/delete', authenticate, (req,res) => {
   const {username} = req.body
 
   Users.remove(username)
   .then (user => {
-    res.status(201).json({message:`succesfully deleted user ${user.username}`})
+    res.status(201).json({message:`succesfully deleted user `})
   })
   .catch(error => {
     res.status(500).json({message:'failed to delete user', error});

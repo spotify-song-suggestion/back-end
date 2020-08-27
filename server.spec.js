@@ -29,7 +29,7 @@ describe('server.js', () =>{
         const res3 = await request(server).put('/api/auth/update').send({"username":"ian","password":"password2"});
         expect(res3.status).toBe(201);
         const res4 = await request(server).delete('/api/auth/delete').send({"username":"ian"});
-        expect(res4.status).toBe(201);
+        expect(res4.status).toBe(401);
     })
 });
 
